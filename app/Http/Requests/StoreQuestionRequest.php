@@ -23,12 +23,12 @@ class StoreQuestionRequest extends FormRequest
     {
         return [
             'stem' => ['required', 'string'],
-            'type' => ['required', 'in:blank,multiple_choice, short_question'],
-            'option_a' => ['sometimes', 'string'],
-            'option_b' => ['sometimes', 'string'],
-            'option_c' => ['sometimes', 'string'],
-            'option_d' => ['sometimes', 'string'],
-            'correct_answer' => ['sometimes', 'string'],
+            'type' => ['required', 'in:blank,multiple_choice, short_question, long_question'],
+            'option_a' => ['required_if:type,multiple_choice', 'string'],
+            'option_b' => ['required_if:type,multiple_choice', 'string'],
+            'option_c' => ['required_if:type,multiple_choice', 'string'],
+            'option_d' => ['required_if:type,multiple_choice', 'string'],
+            'correct_answer' => ['required_if:type,multiple_choice,blank', 'string'],
             'explanation' => ['sometimes', 'string'],
             'image' => ['sometimes', 'image', 'mimes:jpg,jpeg,png,svg,bmp,gif','max:4096'],
             'heading_id' => ['sometimes', 'exists:headings,id'],
