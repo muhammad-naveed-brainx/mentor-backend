@@ -23,7 +23,7 @@ class StoreQuestionRequest extends FormRequest
     {
         return [
             'stem' => ['required', 'string'],
-            'type' => ['required', 'in:blank,multiple_choice, short_question, long_question'],
+            'type' => ['required', 'in:blank,multiple_choice,short_question,long_question'],
             'option_a' => ['required_if:type,multiple_choice', 'string'],
             'option_b' => ['required_if:type,multiple_choice', 'string'],
             'option_c' => ['required_if:type,multiple_choice', 'string'],
